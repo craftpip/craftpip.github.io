@@ -47,7 +47,7 @@
 	    <style type="text/css">
         body{
             font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
-            font-weight: 100;
+            /*font-weight: 100;*/
             background-color: rgba(0,0,0,.02);
         }
         h1,h2,h3,h4,h5,h6{
@@ -56,6 +56,10 @@
         }
         p.content{
             height: 50px;
+        }
+        a:hover, a:active{
+            text-decoration: none;
+            background: white;
         }
         </style>
     </head>
@@ -81,13 +85,15 @@
     					Hey there, my name is Boniface Periera. I am a Web Developer and Designer<br>
 						I have great passion to build User Interfaces and Large scale Web Applications. 
     				</p>
-	    			<hr>
-    				<h3>Projects</h3>
+	    			<!-- <hr> -->
+    				<h4><a href="http://craftpip.com" target="_craftpip">Website</a> 
+                    | <a href="http://craftpip.com/#contact" target="_craftpipcontact">Contact</a>
+                     | <a href="http://craftpip.com/#about" target="_craftpipabout">About</a></h4>
 	    			<hr>
     				<div class="row">
                         <div class="col-md-6">
                             <div class="project">
-                                <a href="bootstrap-fullscreen-select"><h2>Bootstrap-fullscreen-select</h2></a>
+                                <a class="project-title" href="bootstrap-fullscreen-select"><h2>Bootstrap-fullscreen-select</h2></a>
                                 <p class="content">
                                     A powerful SELECT for your Web app, Mobile UI, Cordova/phoneGap project.
                                     This plugin makes it super easy for a user to use the 'select' on small touch screen devices. 
@@ -106,7 +112,7 @@
                         </div>
     					<div class="col-md-6">
     						<div class="project">
-	    						<a href="jquery-confirm"><h2>jQuery-confirm</h2></a>
+	    						<a class="project-title" href="jquery-confirm"><h2>jQuery-confirm</h2></a>
 	    						<p class="content">
                                 A modern way to Alert and Confirm. <br>
                                 Full of features, like Auto-Close, Themes, Animations and more.
