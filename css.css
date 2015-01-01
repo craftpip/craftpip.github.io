@@ -1,0 +1,33 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+body{
+    font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+    font-family: 'open sans';
+/*     font-weight: 600; */
+    background-color: rgba(0,0,0,.00);
+}
+.heading{
+	text-align:center;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: 500;
+	color: #11A1D3;
+}
+p.content{
+    height: 55px;
+}
+a:hover, a:active{
+    text-decoration: none;
+    background: white;
+}
+.main-title{
+    font-size: 3.5em;
+}
+.project{
+    margin-bottom: 80px;
+}
+@media (max-width: 420px){
+    .main-title{
+        font-size: 2.2em;
+    }
+}
