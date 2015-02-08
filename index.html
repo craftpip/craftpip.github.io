@@ -5,80 +5,156 @@
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
         <title>Boniface Pereira / github.io</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-        
+    <!-- bing verification -->
+        <meta name="msvalidate.01" content="7C799E695AE266CC19E9E0F41A8F31CC" />
+    <!-- END bing verification -->
+
         <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-        
+
         <meta name="description" content="Hi, i'm boniface pereira. I'm a web developer, i develope">
         <link rel="canonical" href="https://craftpip.github.io/" />
         <link rel="icon" type="img/ico" href="http://craftpip.com/apple-touch-icon-57x57.png">
         <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
         <meta name="robots" content="index,follow,noodp,noydir"/>
-
         <!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> -->
         <!-- <meta property="fb:profile_id" content="350437395056145" />
         <meta property="fb:admins" content="100000226762279"/> -->
         <meta name="Keywords" content="bootstrap select, bootstrap fullscreen select, jquery select, jquery plugins, front end developer, boniface pereira, craftpip, mobile, user interface" />
-
         <link rel="apple-touch-icon" sizes="57x57" href="http://craftpip.com/apple-touch-icon-57x57.png" />
         <link rel="apple-touch-icon" sizes="72x72" href="http://craftpip.com/apple-touch-icon-72x72.png" />
         <link rel="apple-touch-icon" sizes="114x114" href="http://craftpip.com/apple-touch-icon-114x114.png" />
         <link rel="apple-touch-icon" sizes="144x144" href="http://craftpip.com/apple-touch-icon-144x144.png" />
         <link rel="apple-touch-icon" href="http://craftpip.com/apple-touch-icon-57x57.png" />
-
         <meta property="og:title" content="Boniface Pereira / github.io pages" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="http://craftpip.com/apple-touch-icon-57x57.png" />
         <meta property="og:url" content="https://craftpip.github.io/" />
         <meta property="og:description" content="" />
         <meta property="og:site_name" content="craftpip.github.io" />
-
         <link rel="stylesheet" href="demo/libs/bootstrap.min.css">
         <link rel="stylesheet" href="demo/libs/bootstrap-theme.min.css">
         <link rel="stylesheet" href="demo/libs/font-awesome.min.css">
         <link rel="stylesheet" href="demo/libs/default.min.css">
         <link rel="stylesheet" href="css.css">
-
         <script src="demo/libs/jquery.min.js"></script>
         <script src="demo/libs/bootstrap.min.js"></script>
         <script src="demo/libs/pretty.js"></script>
-        
+        <script src="https://code.createjs.com/createjs-2014.12.12.min.js"></script>
+        <script>
+                    var stage, shape;
+                    var balls = [];
+                    function init(){
+                        //Draw a square on screen.
+                        stage = new createjs.Stage('can');
+                        var height = 150,
+                            width = 300;
+
+                        // var Owidth = $('canvas').width();
+                        // var Oheight = (height*Owidth)/width;
+                        // console.log(Owidth, Oheight);
+                        
+                        stage.canvas.width = $(window).width();
+                        stage.canvas.height = $(window).height();
+
+                        createjs.Ticker.addEventListener("tick", tick);
+                        
+                    }
+                    // var speedcounter = 90;
+                    function addBall(){
+                        shape = new createjs.Shape();
+                        var radius = Math.floor(Math.random()*20) ;
+                        shape.graphics.beginFill('#ddd').drawCircle(0, 0, radius);
+                        shape.x = Math.floor(Math.random()*$(window).width());
+                        shape.y = -30;
+                        // shape.y = Math.floor(Math.random()*$(window).height());
+                        
+                        shape.addEventListener('click', function(e){
+                            stage.removeChild(shape);
+                            alert('asd');
+                        });
+
+                        var blurFilter = new createjs.BlurFilter(radius, radius, 10);
+                        shape.filters = [blurFilter];
+                        var bounds = blurFilter.getBounds();
+                        shape.cache(-50+bounds.x, -50+bounds.y, 100+bounds.width, 100+bounds.height);
+
+                        // speedcounter /= 30;
+                        // if(speedcounter < 1 ){
+                            // speedcounter = 90;
+                        // }
+
+                        var speed = radius - 5;
+                        // speed .=
+                        var obj = {
+                            speed : speed,
+                            shape: shape
+                        }
+                        balls.push(obj);
+                        stage.addChild(shape);
+                    }
+                    var ticks = 0;
+                    function tick(){
+                        for(var i = 0; i < balls.length; i++){
+                            var b = balls[i].shape;
+                            // balls[i].y = balls[i].y + Math.ceil(Math.random()*5);
+                            balls[i].shape.y = balls[i].shape.y + balls[i].speed;
+                            if(balls[i].shape.y > stage.canvas.height+100){
+                                stage.removeChild(balls[i]);
+                            }
+                        }
+                        ticks += 1;
+
+                        if(ticks%10 == 0 ){
+                            addBall();
+                        }
+
+                        stage.update();
+                    }
+        </script>
     </head>
-    <body>
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-12">
+    <body onload="init()">
+        <!-- // <script src="//cdnjs.cloudflare.com/ajax/libs/EaselJS/0.7.1/easeljs.min.js"></script> -->
+        <canvas id="can" style="position:fixed;z-index: -1"></canvas>
+        <!-- <div class="container">
+                        <div class="div">
+                                <div class="col-md-12">
+                                </div>
+                        </div>
+        </div> -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
                     <div class="heading">
-    				<h1 class="main-title">craftpip.github.io</h1>
-    				<p>
-    					Hey there, my name is Boniface Periera. I am a Web Developer and Designer
+                        <h1 class="main-title">craftpip.github.io</h1>
+                        <p>
+                        Hey there, my name is Boniface Periera. I am a Web Developer and Designer
                         <br>
                         <span style="font-size: 18px;margin-top:5px;display:block">
-                            I <i class="fa fa-heart" style="color:red"></i> to Collaborate.
-                            Development is fun. and fun things is what i do.
+                        I <i class="fa fa-heart" style="color:red"></i> to Collaborate.
+                        Development is fun. and fun things is what i do.
                         </span>
-    				</p>
-	    			<!-- <hr> -->
-    				<h4>
-                        <a href="http://craftpip.com" target="_craftpip">Website</a> 
+                        </p>
+                        <!-- <hr> -->
+                        <h4>
+                        <a href="http://craftpip.com" target="_craftpip">Website</a>
                         &bull; <a href="http://craftpip.com/#contact" target="_craftpipcontact">Contact</a>
                         &bull; <a href="http://craftpip.com/#about" target="_craftpipabout">About</a>
-                    </h4>
+                        </h4>
                     </div>
-	    			<hr>
-    				<div class="row">
+                    <hr>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="project">
                                 <a class="project-title" href="bootstrap-fullscreen-select"><h2>Bootstrap-fullscreen-select</h2></a>
                                 <p class="content">
-                                    A Powerful/Multipurpose SELECT for your Web App, Mobile UI, Cordova/Phonegap project.
+                                A Powerful/Multipurpose SELECT for your Web App, Mobile UI, Cordova/Phonegap project.
                                 </p>
-                                
+
                                 <div class="pull-left">
                                     <a href="bootstrap-fullscreen-select" class="btn btn-info btn-sm"> <i class="fa fa-arrow-right fa-fw"></i> view docs</a>
                                 </div>
-
                                 <div class="pull-right">
                                     <code>v1.5.1</code>
                                     <a href="https://github.com/craftpip/bootstrap-fullscreen-select/releases/latest" class="btn btn-default btn-sm">Download latest release</a>
@@ -86,41 +162,37 @@
                                 </div>
                             </div>
                         </div>
-    					<div class="col-md-6">
-    						<div class="project">
-	    						<a class="project-title" href="jquery-confirm"><h2>jQuery-confirm</h2></a>
-	    						<p class="content">
+                        <div class="col-md-6">
+                            <div class="project">
+                                <a class="project-title" href="jquery-confirm"><h2>jQuery-confirm</h2></a>
+                                <p class="content">
                                 A modern way to Alert and Confirm. <br>
                                 Full of features, like Auto-Close, Themes, Animations and more.
-	    						</p>
-	    						
-	    						<div class="pull-left">
-		    						<a href="jquery-confirm" class="btn btn-info btn-sm"> <i class="fa fa-arrow-right fa-fw"></i> view docs</a>
-								</div>
+                                </p>
 
-	    						<div class="pull-right">
-	    							<code>v1.0.0</code>
-		    						<a href="https://github.com/craftpip/jquery-confirm/releases/latest" class="btn btn-default btn-sm">Download latest release</a>
-		    						<a href="https://github.com/craftpip/jquery-confirm" class="btn btn-default btn-sm">View on github.com</a>
-	    						</div>
-    						</div>
-    					</div>
-    				</div>
-
-    				<div class="row">
-    					<div class="col-md-12">
-    						<footer style="margin-top: 40px;">
-			    				<hr>
-    							<p class="text-center">Made by <a href="http://craftpip.com" target="craftpip.com">craftpip.com</a>. Hosted on github pages.</p>
-    						</footer>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-
-        <script type="text/javascript" src="demo/demo.min.js"></script> 
+                                <div class="pull-left">
+                                    <a href="jquery-confirm" class="btn btn-info btn-sm"> <i class="fa fa-arrow-right fa-fw"></i> view docs</a>
+                                </div>
+                                <div class="pull-right">
+                                    <code>v1.0.0</code>
+                                    <a href="https://github.com/craftpip/jquery-confirm/releases/latest" class="btn btn-default btn-sm">Download latest release</a>
+                                    <a href="https://github.com/craftpip/jquery-confirm" class="btn btn-default btn-sm">View on github.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <footer style="margin-top: 40px;">
+                                <hr>
+                                <p class="text-center">Made by <a href="http://craftpip.com" target="craftpip.com">craftpip.com</a>. Hosted on github pages.</p>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="demo/demo.min.js"></script>
         <!-- javascript for the demo page interface. -->
     </body>
-
 </html>
