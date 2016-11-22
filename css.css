@@ -2,13 +2,13 @@
 
 body{
     font-family: Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
-    /*font-family: 'open sans';*/
+    /*font-family: Arial,"Helvetica Neue",Helvetica,sans-serif*/
      font-weight: normal;
     /*background-color: rgba(0,0,0,.00);*/
     background-color: #fff;
 }
 .heading{
-	text-align:center;
+	text-align:left;
     background-color: #fff;
     padding-bottom: 20px;
 }
@@ -16,11 +16,11 @@ body{
     font-size: 32px;
 }
 .heading a{
-    color: #777;
-    text-transform: uppercase;
+    /*color: #777;*/
+    /*text-transform: uppercase;*/
 }
 .heading a:hover{
-    color: #333;
+    /*color: #333;*/
 	border-color: #333;
 }
 .heading ul{
@@ -43,13 +43,16 @@ a:hover, a:active{
     border-bottom: solid 1px #444;
 }
 .project{
-    margin-bottom: 80px;
+    margin-bottom: 20px;
     border: solid 1px #eaeaea;
-    padding: 10px;
+    padding: 20px;
+    border-radius: 4px;
 }
-.project .project-title h3{
+.project:hover{
+    border-color: dodgerblue;
+}
+.project .project-title h4{
     margin-top: 0;
-    padding-top: 0;
 }
 .cp-footer img{
     height: 20px;
